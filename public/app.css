@@ -4,17 +4,27 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Középre igazítás vízszintesen */
+    justify-content: center; /* Középre igazítás függőlegesen */
+    min-height: 100vh; /* Teljes képernyő magasság */
 }
 
-.menu {
+/* Közös konténer stílus a menühöz és táblázathoz */
+.centered-container {
     background-color: #ffffff; /* Fehér háttér */
     border: 1px solid #cccccc; /* Sötétebb keret */
-    padding: 1rem;
-    max-width: 300px; /* Max szélesség asztali nézetben */
-    margin: 1rem auto; /* Mobilon középre igazítás */
     border-radius: 8px; /* Lekerekített sarkok */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék */
+    padding: 1.5rem;
+    margin: 1rem auto;
+    max-width: 600px; /* Maximális szélesség asztali nézetben */
+    width: 100%; /* Mobil nézetben teljes szélesség */
+    text-align: center; /* Középre igazított szöveg */
 }
 
+/* Menü stílusok */
 .menu ul {
     list-style: none; /* Lista stílus kikapcsolása */
     margin: 0;
@@ -22,7 +32,7 @@ body {
 }
 
 .menu li {
-    margin-bottom: 1rem; /* Köz nagyobb listaelemek között */
+    margin-bottom: 1rem; /* Köz a listaelemek között */
 }
 
 .menu a {
@@ -31,10 +41,9 @@ body {
     font-size: 1.2rem; /* Nagyobb betűméret */
     font-weight: bold;
     color: #333333; /* Sötét szöveg */
-    background-color: #e0e0e0; /* Világosszürke háttér */
+    background-color: #e0e0e0; /* Világos szürke háttér */
     padding: 1rem 1.5rem; /* Nagyobb kattintható terület */
-    border-radius: 8px; /* Gombhoz hasonló lekerekítés */
-    text-align: center; /* Szöveg középre igazítása */
+    border-radius: 8px; /* Lekerekített gombszerű megjelenés */
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -43,28 +52,11 @@ body {
     transform: translateY(-2px); /* Kicsit kiemelkedik hover-nél */
 }
 
-/* Reszponzív stílusok */
-@media (min-width: 768px) {
-    .menu {
-        margin: 1rem; /* Asztali nézetben balra igazítva */
-    }
-}
-
-
 /* Táblázat stílusok */
-.table-container {
-    margin: 2rem auto; /* Középre helyezés */
-    max-width: 600px; /* Maximális szélesség asztali nézetben */
-    overflow-x: auto; /* Görgethetőség mobilon, ha túl keskeny */
-    background-color: #ffffff; /* Fehér háttér */
-    border: 1px solid #cccccc; /* Sötétebb keret */
-    border-radius: 8px; /* Lekerekített sarkok */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék */
-}
-
 .table {
-    width: 100%; /* Teljes szélesség */
+    width: 100%; /* Táblázat teljes szélessége */
     border-collapse: collapse; /* Szegélyek összevonása */
+    margin-top: 1rem; /* Táblázat tetején kis tér */
 }
 
 .table th,
@@ -91,7 +83,6 @@ body {
 
 .table tr:hover td {
     background-color: #e0e0e0; /* Hover effektus */
-    cursor: default; /* Alapértelmezett kurzor */
 }
 
 .table th:first-child,
@@ -104,13 +95,18 @@ body {
     border-top-right-radius: 8px; /* Lekerekített jobb felső sarok */
 }
 
+/* Mobilbarát stílusok */
 @media (max-width: 768px) {
-    .table-container {
-        padding: 1rem; /* Kisebb belső margó mobilon */
+    .centered-container {
+        padding: 1rem; /* Kisebb margó mobilon */
+    }
+
+    .menu a {
+        font-size: 1rem; /* Kisebb betűméret mobilon */
     }
 
     .table th,
     .table td {
-        font-size: 0.9rem; /* Kissé kisebb betűméret mobil nézetben */
+        font-size: 0.9rem; /* Kisebb betűméret mobilon */
     }
 }
