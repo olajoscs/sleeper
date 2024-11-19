@@ -1,0 +1,116 @@
+/* Alap stílusok */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.menu {
+    background-color: #ffffff; /* Fehér háttér */
+    border: 1px solid #cccccc; /* Sötétebb keret */
+    padding: 1rem;
+    max-width: 300px; /* Max szélesség asztali nézetben */
+    margin: 1rem auto; /* Mobilon középre igazítás */
+    border-radius: 8px; /* Lekerekített sarkok */
+}
+
+.menu ul {
+    list-style: none; /* Lista stílus kikapcsolása */
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-bottom: 1rem; /* Köz nagyobb listaelemek között */
+}
+
+.menu a {
+    display: block; /* Teljes szélesség kattintható */
+    text-decoration: none; /* Aláhúzás kikapcsolása */
+    font-size: 1.2rem; /* Nagyobb betűméret */
+    font-weight: bold;
+    color: #333333; /* Sötét szöveg */
+    background-color: #e0e0e0; /* Világosszürke háttér */
+    padding: 1rem 1.5rem; /* Nagyobb kattintható terület */
+    border-radius: 8px; /* Gombhoz hasonló lekerekítés */
+    text-align: center; /* Szöveg középre igazítása */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu a:hover {
+    background-color: #d0d0d0; /* Sötétebb szürke háttér hover-re */
+    transform: translateY(-2px); /* Kicsit kiemelkedik hover-nél */
+}
+
+/* Reszponzív stílusok */
+@media (min-width: 768px) {
+    .menu {
+        margin: 1rem; /* Asztali nézetben balra igazítva */
+    }
+}
+
+
+/* Táblázat stílusok */
+.table-container {
+    margin: 2rem auto; /* Középre helyezés */
+    max-width: 600px; /* Maximális szélesség asztali nézetben */
+    overflow-x: auto; /* Görgethetőség mobilon, ha túl keskeny */
+    background-color: #ffffff; /* Fehér háttér */
+    border: 1px solid #cccccc; /* Sötétebb keret */
+    border-radius: 8px; /* Lekerekített sarkok */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék */
+}
+
+.table {
+    width: 100%; /* Teljes szélesség */
+    border-collapse: collapse; /* Szegélyek összevonása */
+}
+
+.table th,
+.table td {
+    padding: 1rem; /* Tágas cellák */
+    text-align: left; /* Balra igazított szöveg */
+    font-size: 1rem; /* Olvasható betűméret */
+}
+
+.table th {
+    background-color: #f0f0f0; /* Halvány szürke háttér a fejlécen */
+    font-weight: bold;
+    color: #333333; /* Sötét szöveg */
+}
+
+.table td {
+    background-color: #ffffff; /* Fehér cellák */
+    color: #333333;
+}
+
+.table tr:nth-child(even) td {
+    background-color: #f9f9f9; /* Minden második sor halvány szürke */
+}
+
+.table tr:hover td {
+    background-color: #e0e0e0; /* Hover effektus */
+    cursor: default; /* Alapértelmezett kurzor */
+}
+
+.table th:first-child,
+.table td:first-child {
+    border-top-left-radius: 8px; /* Lekerekített bal felső sarok */
+}
+
+.table th:last-child,
+.table td:last-child {
+    border-top-right-radius: 8px; /* Lekerekített jobb felső sarok */
+}
+
+@media (max-width: 768px) {
+    .table-container {
+        padding: 1rem; /* Kisebb belső margó mobilon */
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.9rem; /* Kissé kisebb betűméret mobil nézetben */
+    }
+}

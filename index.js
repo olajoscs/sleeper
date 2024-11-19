@@ -2,14 +2,22 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const execSync = require('child_process').execSync;
+const expressLayouts = require('express-ejs-layouts');
 
+app.use(expressLayouts);
+app.set('layout', path.join(__dirname, '/templates/layout.html'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 app.use(express.static('public'));
 
+
+function renderResponse(res, template, data = {}) {
+	res.render(path.join(__dirname, '/templates', `/${template}`), data);
+}
+
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, '/main.html'));
+    renderResponse(res, 'main.html');
 });
 
 app.get('/sleep', function(req, res){
@@ -34,7 +42,7 @@ app.get('/free-space', function(req, res) {
         })
     ;
 
-    res.render(path.join(__dirname, '/free-space.html'), {freeSpaceEntries: output});
+	renderResponse(res, 'free-space.html', {freeSpaceEntries: output});
 });
 
 app.get('/restart-plex', function(req, res) {
@@ -70,7 +78,7 @@ app.get('/restart-plex', function(req, res) {
 		() => {
 			execSync('start "" "C:\\Program Files\\Plex\\Plex Media Server\\Plex Media Server.exe"', { stdio: 'inherit', shell: true });
 			
-			res.render(path.join(__dirname, '/restart-plex.html'));
+			renderResponse(res, 'restart-plex.html');
 		},
 		3000
 	);
