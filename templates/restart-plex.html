@@ -1,5 +1,9 @@
-<% title = 'Restart PLEX'; %>
+<% title = 'Loading'; %>
 
-<%- include('partial-home-button.html') %>
+<script>
+    setTimeout(() => {
+        window.location.href = '/restart-plex-done';
+    }, 3000);
+</script>
 
-<p>Plex restart has been initiated.</p>
+<p>Loading...</p>

@@ -25,8 +25,11 @@ app.get('/sleep', function(req, res){
 });
 
 app.get('/restart', function(req, res){
-	execSync('shutdown /r');
+	// execSync('shutdown /r');
 	renderResponse(res, 'restart-computer.html');
+	setTimeout(() => {
+		res.redirect('/');
+	}, 1000);
 });
 
 app.get('/free-space', function(req, res) {
@@ -51,6 +54,10 @@ app.get('/free-space', function(req, res) {
 });
 
 app.get('/restart-plex', function(req, res) {
+	// render loading screen
+	renderResponse(res, 'restart-plex.html');
+
+	// restart plex
 	let commandResult;
 	try {
 		commandResult = execSync('tasklist | findstr "Plex\\ Media\ Server"');
@@ -78,22 +85,18 @@ app.get('/restart-plex', function(req, res) {
 	for (let processId of processIds) {
 		execSync('taskkill /PID '+processId);
 	}
-
-	/**
-	 * TODO:OCS
-	 * res.forward plex- restart
-	 * wait 3-5 seconds
-	 * forward to plex restart done
-	 */
 	
 	setTimeout(
 		() => {
 			execSync('start "" "C:\\Program Files\\Plex\\Plex Media Server\\Plex Media Server.exe"', { stdio: 'inherit', shell: true });
-			
-			renderResponse(res, 'restart-plex.html');
 		},
 		3000
 	);
+});
+
+
+app.get('/restart-plex-done', function(req, res) {
+	renderResponse(res, 'restart-plex-done.html');
 });
 
 app.listen(3000);
