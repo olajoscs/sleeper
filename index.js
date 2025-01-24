@@ -24,6 +24,11 @@ app.get('/sleep', function(req, res){
     execSync('Rundll32.exe Powrprof.dll,SetSuspendState Sleep');
 });
 
+app.get('/restart', function(req, res){
+	execSync('shutdown /r');
+	renderResponse(res, 'restart-computer.html');
+});
+
 app.get('/free-space', function(req, res) {
     let output = execSync(' wmic LogicalDisk Where DriveType="3" Get DeviceID,FreeSpace')
         .toString()
@@ -73,6 +78,13 @@ app.get('/restart-plex', function(req, res) {
 	for (let processId of processIds) {
 		execSync('taskkill /PID '+processId);
 	}
+
+	/**
+	 * TODO:OCS
+	 * res.forward plex- restart
+	 * wait 3-5 seconds
+	 * forward to plex restart done
+	 */
 	
 	setTimeout(
 		() => {
