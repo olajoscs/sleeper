@@ -25,11 +25,8 @@ app.get('/sleep', function(req, res){
 });
 
 app.get('/restart', function(req, res){
-	// execSync('shutdown /r');
+	execSync('shutdown /r');
 	renderResponse(res, 'restart-computer.html');
-	setTimeout(() => {
-		res.redirect('/');
-	}, 1000);
 });
 
 app.get('/free-space', function(req, res) {
